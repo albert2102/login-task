@@ -1,0 +1,113 @@
+<div class=" background">
+    <div class="divform">
+        <form #f="ngForm" (ngSubmit) ="submit(f)">
+            <div class="col">
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-user icons"></span>
+                            </span>
+                        </div>
+                        <input required ngModel name="username" #username="ngModel"  id="username" type="text"
+                         class="form-control text ng-dirty ng-touched ng-invaild ng-valid" placeholder="Username" minlength="4"
+                          pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$" 
+                          >
+                        <div class="alert alert-danger col-sm-20" *ngIf="username.touched && !username.valid">
+                          <div *ngIf="username.errors.required">username is required!</div>
+                          <div *ngIf="username.errors.minlength">username shoude at least ({{username.errors.minlength.requiredLength}}) characters!</div>
+                          <div *ngIf="username.errors.pattern">username Shoude be like (asda asdas)!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                        </div>
+                        <input required ngModel name="password" #password="ngModel"  id="password" type="password"
+                        class="form-control text ng-dirty ng-touched ng-invaild ng-valid" placeholder="password" 
+                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+                         >
+                       <div class="alert alert-danger col-sm-20" *ngIf="password.touched && !password.valid">
+                         <div *ngIf="password.errors.required">password is required!</div>
+                         <div *ngIf="password.errors.pattern">
+                        Password minimum eight characters, at least one letter Uppercase ,
+                        at least one letter Lowercase and one Number and one Special characters!</div>
+                       </div>                  
+                      </div>
+                </div>
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                        </div>
+                        <input required ngModel name="confirmpassword" #confirmpassword="ngModel"  id="confirmpassword" type="password"
+                        class="form-control text ng-dirty ng-touched ng-invaild ng-valid" placeholder="Confirm Password" 
+                        validateEqual="password"
+                         >
+                       <div class="alert alert-danger col-sm-20" *ngIf="confirmpassword.touched && !confirmpassword.valid">
+                         <div *ngIf="confirmpassword.errors.required">password is required!</div>
+                         <div *ngIf="!confirmpassword.valid">Password doesn't match!</div>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-envelope"></span>
+                            </span>
+                        </div>
+                        <input required ngModel name="email" #email="ngModel"  id="email" type="text"
+                        class="form-control text ng-dirty ng-touched ng-invaild ng-valid" placeholder="Email" 
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                         >
+                       <div class="alert alert-danger col-sm-20" *ngIf="email.touched && !email.valid">
+                         <div *ngIf="email.errors.required">Email is required!</div>
+                         <div *ngIf="email.errors.pattern">Email isn't Invalid!</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group"  >
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-map-marker"></span>
+                            </span>
+                        </div>
+                        <select  class="form-control text minimal ng-dirty ng-touched ng-invaild ng-valid"  ngModel   #location="ngModel" id="location"
+                        name="location" required>>
+                            <option value="" selected [ngValue]="undefined">Location</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="USA">USA</option>
+                            <option value="UEK">UEK</option>
+                        </select>
+                        <div class="alert alert-danger col-sm-20" *ngIf="location.touched && !location.valid">
+                            <div *ngIf="location.errors.required">Location is required!</div>
+                       </div>                   
+                     </div>
+                </div>
+                <div class="row-sm-20 input-fields">
+                    <div class="input-group x">
+                        <label class="checkbox-button">
+                            <input type="checkbox" ngModel   #choice1="ngModel" class="checkbox-button__input" id="choice1-1"
+                             name="choice1" required>
+                            <span class="checkbox-button__control "></span>
+                            <span class="checkbox-button__label label ">I have read and accept the terms of use</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-20 input-fields">
+                    <div class="input-group">
+                        <button type="submit" class="form-control text button" [disabled]="!f.valid">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
